@@ -1,0 +1,35 @@
+{
+    "name": "Cookie automation",
+    "version": "0.1.0",
+    "description": "Automatically clicks through cookie notices ",
+    "permissions": [
+    "storage",
+    "webNavigation",
+    "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+      ],
+
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "exclude_matches": ["*://www.amazon.co.uk/*"],
+        "js": ["content.js"]
+      }
+    ],
+    
+    "action": {
+      "default_icon": {
+        "16": "assets/cookieIcon.png",
+        "24": "assets/cookieIcon.png",
+        "32": "assets/cookieIcon.png"
+      },
+      "default_title": "Cookie automation",
+      "default_popup": "popup.html"
+    },
+    "manifest_version": 3
+  }
