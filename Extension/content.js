@@ -1,8 +1,8 @@
 //define in popup
-const accept = true;
-const reject = false;
-// const accept = false;
-// const reject = true;
+// const accept = true;
+// const reject = false;
+const accept = false;
+const reject = true;
 
 function isElementPresent(element) {
     return element && element.parentNode !== null;
@@ -42,6 +42,7 @@ function findElementInBanner(banner, List){
 function findElementInDoc(List){
     let element = null
     for (const description of List) {
+        console.log(description)
         element = document.querySelector(`[aria-label*="${description}"]`)
 
         if (!element) {
@@ -135,7 +136,7 @@ function manageButton(banner) {
                         closeBtn.click()
                     }
                 }
-                }, 100);
+                }, 500);
             
             }
     else{
@@ -158,31 +159,42 @@ setTimeout(checkForCookieBanner, 2000);
 
 const bannerList = [
     "_50f4",
+    "Discord",
+    "app-0-0-2",
     "gdpr-new-container",
     "gdpr-banner",
+    "toast-container",
     "sn-inner",
     "all4-cc-grid",
-    "ytd-consent",
+    "ytd-consent", 
     "consent-overlay",
+    "CookieAlert",
     "consent-banner",
+    "Cookie Consent Banner",
+    "cookie_banner",
     "cookie-banner",
     "Cookie banner",
+    "Privacy",
     "Cookie",
     "cookie",
-    "banner"
+    "notice"
 ]
 
 const acceptList = [
     "cta-lg",
+    "okck",
+    "accept-btn-handler",
     "accept",
     "Accept",
     "Allow",
     "cookies-continue",
+    "primary"
 ]
 
 const rejectList = [
     "btn-secondary-lg", 
-    " reject-all",
+    "reject-all",
+    "reject-btn-handler",
     "Reject",
     "reject",
     "Decline"
@@ -190,19 +202,23 @@ const rejectList = [
 
 const mangeList = [
     "pc-btn-handler",
+    "ck_set",
     "cookie-settings",
     "Manage",
     "more",
     "manage",
-    "custom"
+    "custom",
+    "basic"
 ]
 
 const closeCookieList = [
+    "button--reject",
     "close-btn-handler",
     "sn-b-save",
     "accept-selection",
     "Save",
     "save"
+   
 ]
 
 const performanceList = [
