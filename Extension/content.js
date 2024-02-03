@@ -42,7 +42,7 @@ function findElementInBanner(banner, List){
 function findElementInDoc(List){
     let element = null
     for (const description of List) {
-        console.log(description)
+        // console.log(description)
         element = document.querySelector(`[aria-label*="${description}"]`)
 
         if (!element) {
