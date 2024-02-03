@@ -166,10 +166,13 @@ const bannerList = [
     "toast-container",
     "sn-inner",
     "all4-cc-grid",
-    "ytd-consent", 
+    "ytd-consent",
+    "user-consent-management",
+    "consent_blackbar",
     "consent-overlay",
     "CookieAlert",
     "consent-banner",
+    "cookieconsent",
     "Cookie Consent Banner",
     "cookie_banner",
     "cookie-banner",
@@ -184,19 +187,23 @@ const acceptList = [
     "cta-lg",
     "okck",
     "accept-btn-handler",
+    "consent-button",
     "accept",
     "Accept",
     "Allow",
+    "allow",
     "cookies-continue",
     "primary"
 ]
 
 const rejectList = [
-    "btn-secondary-lg", 
+    "btn-secondary-lg",
+    "consent-required",
     "reject-all",
     "reject-btn-handler",
     "Reject",
     "reject",
+    "dismiss",
     "Decline"
 ]
 
