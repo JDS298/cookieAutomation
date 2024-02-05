@@ -15,13 +15,6 @@
     "background": {
       "service_worker": "background.js"
     },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "exclude_matches": ["*://www.amazon.co.uk/*"],
-        "js": ["content.js"]
-      }
-    ],
     
     "action": {
       "default_icon": {

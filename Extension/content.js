@@ -70,13 +70,17 @@ function checkForCookieBanner(times = 0) {
     let banner = findElementInDoc(bannerList)
     if (banner) {
         console.log('This is the banner',  banner);
-        if(accept){
-            acceptAll(banner)
-        }
-        else if(reject){
-            rejectAll(banner)
-        }
-        }
+        chrome.storage.local.get(['cookieType'], function(result) {
+            if(result.cookieType === 'ACCEPT'){
+                console.log("Accept stored")
+                acceptAll(banner)
+            }
+            else if(result.cookieType === 'REJECT'){
+                console.log("Reject stored")
+                rejectAll(banner)
+            }
+        });
+    }
     else{
         console.log("could not find a banner")
         if (times <= 0 ){
@@ -116,46 +120,34 @@ function rejectAll(banner) {
 
 
 function manageButton(banner) {
-    if(isElementPresent(banner)){
-        console.log('mange');
-        let mangeBtn = findElementInBanner(banner, mangeList)
-            if (mangeBtn) {
-                console.log('This is manage',  mangeBtn);
-                mangeBtn.click()
-                console.log('close');
-                setTimeout(() => {
-                    let closeBtn = findElementInBanner(banner, closeCookieList)
-                if (closeBtn) {
-                    console.log('This is close',  closeBtn);
-                    closeBtn.click()
-                }
-                else{
-                    closeBtn = findElementInDoc(closeCookieList)
-                    if(closeBtn){
-                        console.log('This is close',  closeBtn);
-                        closeBtn.click()
-                    }
-                }
-                }, 500);
-            
-            }
-    else{
-
+    console.log('mange');
+    let mangeBtn = findElementInBanner(banner, mangeList)
+    if (mangeBtn) {
+        console.log('This is manage',  mangeBtn);
+        mangeBtn.click()
+        setTimeout(() => {closeMangePage(banner)}, 500);      
     }
 }
+
+function closeMangePage(banner){
+    console.log('close');
+    let closeBtn = findElementInBanner(banner, closeCookieList)
+    if (closeBtn) {
+        console.log('This is close',  closeBtn);
+        closeBtn.click()
+    }
+    else{
+        closeBtn = findElementInDoc(closeCookieList)
+        if(closeBtn){
+            console.log('This is close',  closeBtn);
+            closeBtn.click()
+        }
+    }
 }
-
-
-
-function performanceCookiesFunc(){}
-
-function functionalityCookiesFunc() {}
-
-function advertisingCookiesFunc() {}
 
 
 // Wait for 5 seconds after the page loads, then run the check
-setTimeout(checkForCookieBanner, 2000);
+setTimeout(checkForCookieBanner, 1000);
 
 const bannerList = [
     "_50f4",
