@@ -1,13 +1,3 @@
-//define in popup
-// const accept = true;
-// const reject = false;
-const accept = false;
-const reject = true;
-
-function isElementPresent(element) {
-    return element && element.parentNode !== null;
-}
-
 function findElementInBanner(banner, List){
     let Btn = null
     for (const description of List) {
