@@ -139,7 +139,7 @@ function closeMangePage(banner){
 // Wait for 5 seconds after the page loads, then run the check
 setTimeout(checkForCookieBanner, 1000);
 
-const bannerList = [
+let bannerList = [
     "_50f4",
     "Discord",
     "app-0-0-2",
@@ -165,7 +165,7 @@ const bannerList = [
     "notice"
 ]
 
-const acceptList = [
+let acceptList = [
     "cta-lg",
     "okck",
     "accept-btn-handler",
@@ -178,7 +178,7 @@ const acceptList = [
     "primary"
 ]
 
-const rejectList = [
+let rejectList = [
     "btn-secondary-lg",
     "consent-required",
     "reject-all",
@@ -189,7 +189,7 @@ const rejectList = [
     "Decline"
 ]
 
-const mangeList = [
+let mangeList = [
     "pc-btn-handler",
     "ck_set",
     "cookie-settings",
@@ -200,7 +200,7 @@ const mangeList = [
     "basic"
 ]
 
-const closeCookieList = [
+let closeCookieList = [
     "button--reject",
     "close-btn-handler",
     "sn-b-save",
@@ -210,15 +210,4 @@ const closeCookieList = [
    
 ]
 
-const performanceList = [
-    "mange"
-]
-
-const functionallyList = [
-    "mange"
-]
-
-const advertisingList = [
-    "mange"
-]
 
