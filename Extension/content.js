@@ -1,26 +1,29 @@
 function findElementInBanner(banner, List){
     let Btn = null
     for (const description of List) {
-
-        Btn = banner.querySelector(`[href*="${description}"]`)
+        let baseSelector = `:not(style):not(img):not(a):not(h2)`;
+        Btn = banner.querySelector(`${baseSelector}[href*="${description}"]`)
 
         if (!Btn){
-            Btn = banner.querySelector(`[aria-label*="${description}"]`)
+            Btn = banner.querySelector(`${baseSelector}[aria-label*="${description}"]`)
+        }
+        if (!Btn){
+            Btn = banner.querySelector(`${baseSelector}[data-track-action*='${description}']`);
         }
         if (!Btn) {
-            Btn = banner.querySelector(`[id*='${description}']`);
+            Btn = banner.querySelector(`${baseSelector}[id*='${description}']`);
         }
         if (!Btn){
-            Btn = banner.querySelector(`[class*='${description}']`);
+            Btn = banner.querySelector(`${baseSelector}[class*='${description}']`);
         }
         if (!Btn){
-            Btn = banner.querySelector(`[title*='${description}']`);
+            Btn = banner.querySelector(`${baseSelector}[title*='${description}']`);
         }
         if (!Btn){
-            Btn = banner.querySelector(`[data-a-target*='${description}']`);
+            Btn = banner.querySelector(`${baseSelector}[data-a-target*='${description}']`);
         }
          if (!Btn){
-            Btn = banner.querySelector(`[data-testid*='${description}']`);
+            Btn = banner.querySelector(`${baseSelector}[data-testid*='${description}']`);
         }
         if (Btn) {
             return(Btn)
@@ -32,21 +35,22 @@ function findElementInBanner(banner, List){
 function findElementInDoc(List){
     let element = null
     for (const description of List) {
-        // console.log(description)
-        element = document.querySelector(`[aria-label*="${description}"]`)
+        console.log(description)
+        let baseSelector = `:not(style):not(img):not(a):not(h2)`;
+        element = document.querySelector(`${baseSelector}[aria-label*="${description}"]`)
 
         if (!element) {
-            element = document.querySelector(`[class*='${description}']`);
+            element = document.querySelector(`${baseSelector}[class*='${description}']`);
         }
         if (!element){
-            element = document.querySelector(`[id*='${description}']`);
+            element = document.querySelector(`${baseSelector}[id*='${description}']`);
             // console.log(document.querySelector(`[class*='${description}']`))
         }
         if (!element){
-            element = document.querySelector(`[data-a-target*='${description}']`);
+            element = document.querySelector(`${baseSelector}[data-a-target*='${description}']`);
         }
         if (!element){
-            element = document.querySelector(`[data-testid*='${description}']`);
+            element = document.querySelector(`${baseSelector}[data-testid*='${description}']`);
         }
         if (element) {
             return(element)
@@ -141,41 +145,52 @@ setTimeout(checkForCookieBanner, 1000);
 
 let bannerList = [
     "_50f4",
-    "Discord",
+    "didomi-host",
     "app-0-0-2",
+    "evidon-banner",
     "gdpr-new-container",
     "gdpr-banner",
+    "gdpr-content",
     "toast-container",
     "sn-inner",
     "all4-cc-grid",
     "ytd-consent",
+    "consent-manager",
     "user-consent-management",
     "consent_blackbar",
     "consent-overlay",
     "CookieAlert",
     "consent-banner",
-    "cookieconsent",
     "Cookie Consent Banner",
+    "cookie-consent",
+    "cookieconsent",
     "cookie_banner",
-    "cookie-banner",
     "Cookie banner",
     "Privacy",
+    "cookie-banner",
+    "mainContent",
     "Cookie",
     "cookie",
-    "notice"
+    "notice",
+    "onetrust-banner-sdk",
 ]
 
 let acceptList = [
     "cta-lg",
     "okck",
+    "truste-button2",
     "accept-btn-handler",
     "consent-button",
+    "consent-btn",
+    "acceptbutton",
     "accept",
     "Accept",
     "Allow",
     "allow",
+    "agree",
     "cookies-continue",
     "primary"
+    
 ]
 
 let rejectList = [
@@ -186,7 +201,9 @@ let rejectList = [
     "Reject",
     "reject",
     "dismiss",
-    "Decline"
+    "Decline",
+    "decline",
+    "deny",
 ]
 
 let mangeList = [
@@ -196,17 +213,22 @@ let mangeList = [
     "Manage",
     "more",
     "manage",
+    "settings",
     "custom",
-    "basic"
+    "basic",
+    "cookiebutton"
 ]
 
 let closeCookieList = [
     "button--reject",
+    "red ensButtons",
     "close-btn-handler",
     "sn-b-save",
     "accept-selection",
     "Save",
-    "save"
+    "save",
+    "CookieOptionsModal_Accept",
+    "decline"
    
 ]
 
