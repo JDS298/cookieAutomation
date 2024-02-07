@@ -59,6 +59,27 @@ function findElementInDoc(List){
     return(element)
 }
 
+function findButtonByTextContent(banner, descriptions) {
+    const allButtons = banner.querySelectorAll('button');
+    console.log('Searching for exact matches:', descriptions.join(', '));
+
+    for (const description of descriptions) {
+        for (const button of allButtons) {
+            // Trim and convert the button text to lowercase for comparison
+            const buttonText = button.textContent.trim().toLowerCase();
+
+            // Check for an exact match instead of using includes
+            if (buttonText === description) { // Assuming `description` is already lowercase
+                console.log('Exact match found:', button);
+                return button; // Return the first button that exactly matches the description
+            }
+        }
+    }
+
+    console.log('No exact match found.');
+    return null;
+}
+
 function checkForCookieBanner(times = 0) {
     console.log('start');
     let banner = findElementInDoc(bannerList)
@@ -95,7 +116,12 @@ function acceptAll(banner) {
         console.log('This is accept',  acceptBtn);
         acceptBtn.click()
     }else{
-
+        console.log('find text');
+        acceptBtn = findButtonByTextContent(banner, textAcceptList)
+        if (acceptBtn) {
+            console.log('This is accept word',  acceptBtn);
+            acceptBtn.click()
+        }
     }
 }
 
@@ -108,7 +134,21 @@ function rejectAll(banner) {
         rejectBtn.click()
     }
     else{
-        manageButton(banner)
+        rejectBtn = findElementInBanner(banner, textRejectList)
+        if(rejectBtn){
+            rejectBtn.click()
+        }
+        else{
+            console.log('find text');
+            rejectBtn = findButtonByTextContent(banner, textRejectList)
+            if (rejectBtn) {
+                console.log('This is reject word',  rejectBtn);
+                rejectBtn.click()
+            }
+            else{
+                manageButton(banner)
+            }
+        }
     }
 }
 
@@ -232,4 +272,14 @@ let closeCookieList = [
    
 ]
 
+let textAcceptList = [
+    "accept",
+    "accept all",
+    "ok"
+]
 
+let textRejectList = [
+    "reject",
+    "reject all",
+    "continue without accepting"
+]
