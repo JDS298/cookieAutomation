@@ -60,7 +60,7 @@ function findElementInDoc(List){
 }
 
 function findButtonByTextContent(banner, descriptions) {
-    const allButtons = banner.querySelectorAll('button');
+    const allButtons = banner.querySelectorAll('button, span');
     console.log('Searching for exact matches:', descriptions.join(', '));
 
     for (const description of descriptions) {
@@ -187,10 +187,19 @@ let bannerList = [
     "_50f4",
     "didomi-host",
     "app-0-0-2",
+    "qc-cmp2-ui",
     "evidon-banner",
+    "portal-container",
+    "global-alert-banner",
+    "onetrust-banner-sdk",
+    "CookiebotDialog",
+    "focus-lock-id",
     "gdpr-new-container",
     "gdpr-banner",
+    "gdpr-popup",
+    "gdpr-callout",
     "gdpr-content",
+    "gdpr_consent",
     "toast-container",
     "sn-inner",
     "all4-cc-grid",
@@ -199,6 +208,7 @@ let bannerList = [
     "user-consent-management",
     "consent_blackbar",
     "consent-overlay",
+    "cookiescript_injected",
     "CookieAlert",
     "consent-banner",
     "Cookie Consent Banner",
@@ -212,7 +222,6 @@ let bannerList = [
     "Cookie",
     "cookie",
     "notice",
-    "onetrust-banner-sdk",
 ]
 
 let acceptList = [
@@ -235,6 +244,7 @@ let acceptList = [
 
 let rejectList = [
     "btn-secondary-lg",
+    "necessary_only_cookies",
     "consent-required",
     "reject-all",
     "reject-btn-handler",
@@ -273,7 +283,9 @@ let closeCookieList = [
 ]
 
 let textAcceptList = [
+    "i accept",
     "accept",
+    "agree",
     "accept all",
     "ok"
 ]
@@ -281,5 +293,7 @@ let textAcceptList = [
 let textRejectList = [
     "reject",
     "reject all",
-    "continue without accepting"
+    "continue without accepting",
+    "accept essential cookies",
+    "decline all"
 ]
