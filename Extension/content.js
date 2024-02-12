@@ -25,6 +25,9 @@ function findElementInBanner(banner, List){
          if (!Btn){
             Btn = banner.querySelector(`${baseSelector}[data-testid*='${description}']`);
         }
+        if (!Btn){
+            Btn = banner.querySelector(`${baseSelector}[data-label*='${description}']`);
+        }
         if (Btn) {
             return(Btn)
         }
@@ -51,6 +54,9 @@ function findElementInDoc(List){
         }
         if (!element){
             element = document.querySelector(`${baseSelector}[data-testid*='${description}']`);
+        }
+        if (!element){
+            element = document.querySelector(`${baseSelector}[bundlename*='${description}']`);
         }
         if (element) {
             return(element)
@@ -200,7 +206,11 @@ let bannerList = [
     "gdpr-callout",
     "gdpr-content",
     "gdpr_consent",
+    "fides-banner",
+    "awsccc-cb-content",
     "toast-container",
+    "modal-886ab",
+    "cmp__dialog",
     "sn-inner",
     "all4-cc-grid",
     "ytd-consent",
@@ -210,6 +220,9 @@ let bannerList = [
     "consent-overlay",
     "cookiescript_injected",
     "CookieAlert",
+    "ConsentBanner",
+    "cookieBannerWrapper",
+    "cookies_banner_modal",
     "consent-banner",
     "Cookie Consent Banner",
     "cookie-consent",
@@ -222,6 +235,7 @@ let bannerList = [
     "Cookie",
     "cookie",
     "notice",
+    "frame-content",
 ]
 
 let acceptList = [
@@ -231,6 +245,7 @@ let acceptList = [
     "accept-btn-handler",
     "consent-button",
     "consent-btn",
+    "ConsentButton",
     "acceptbutton",
     "accept",
     "Accept",
@@ -246,6 +261,7 @@ let rejectList = [
     "btn-secondary-lg",
     "necessary_only_cookies",
     "consent-required",
+    "accept_essential",
     "reject-all",
     "reject-btn-handler",
     "Reject",
@@ -274,6 +290,7 @@ let closeCookieList = [
     "red ensButtons",
     "close-btn-handler",
     "sn-b-save",
+    "learn_more_agree",
     "accept-selection",
     "Save",
     "save",
@@ -295,5 +312,6 @@ let textRejectList = [
     "reject all",
     "continue without accepting",
     "accept essential cookies",
-    "decline all"
+    "decline all",
+    "reject non-essential"
 ]
