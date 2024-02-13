@@ -1,7 +1,7 @@
 function findElementInBanner(banner, List){
     let Btn = null
     for (const description of List) {
-        let baseSelector = `:not(style):not(img):not(a):not(h2)`;
+        let baseSelector = `:not(style):not(img):not(h2)`;
         Btn = banner.querySelector(`${baseSelector}[href*="${description}"]`)
 
         if (!Btn){
@@ -65,8 +65,8 @@ function findElementInDoc(List){
     return(element)
 }
 
-function findButtonByTextContent(banner, descriptions) {
-    const allButtons = banner.querySelectorAll('button, span');
+function findButtonByTextContent(banner, descriptions, close = false) {
+    const allButtons = banner.querySelectorAll('button, span, a');
     console.log('Searching for exact matches:', descriptions.join(', '));
 
     for (const description of descriptions) {
@@ -81,10 +81,35 @@ function findButtonByTextContent(banner, descriptions) {
             }
         }
     }
-
+    // if (close){
+    //     console.log("searching whole doc for close button")
+    //     button = findButtonByTextContentDocument( descriptions)
+    //     return button
+    // }
     console.log('No exact match found.');
     return null;
 }
+
+// function findButtonByTextContentDocument( descriptions) {
+//     const allButtons = document.querySelectorAll('button, span, a');
+//     console.log('Searching for exact matches:', descriptions.join(', '));
+
+//     for (const description of descriptions) {
+//         for (const button of allButtons) {
+//             // Trim and convert the button text to lowercase for comparison
+//             const buttonText = button.textContent.trim().toLowerCase();
+
+//             // Check for an exact match instead of using includes
+//             if (buttonText === description) { // Assuming `description` is already lowercase
+//                 console.log('Exact match found:', button);
+//                 return button; // Return the first button that exactly matches the description
+//             }
+//         }
+//     }
+    
+//     console.log('No exact match found.');
+//     return null;
+// }
 
 function checkForCookieBanner(times = 0) {
     console.log('start');
@@ -146,7 +171,7 @@ function rejectAll(banner) {
         }
         else{
             console.log('find text');
-            rejectBtn = findButtonByTextContent(banner, textRejectList)
+            rejectBtn = findButtonByTextContent(banner, textRejectList, true)
             if (rejectBtn) {
                 console.log('This is reject word',  rejectBtn);
                 rejectBtn.click()
@@ -177,10 +202,18 @@ function closeMangePage(banner){
         closeBtn.click()
     }
     else{
-        closeBtn = findElementInDoc(closeCookieList)
-        if(closeBtn){
+        closeBtn = findButtonByTextContent(banner, textmangePref)
+        if (closeBtn){
             console.log('This is close',  closeBtn);
             closeBtn.click()
+        }
+        else{
+            closeBtn = findElementInDoc(closeCookieList)
+            if(closeBtn){
+                console.log('This is close',  closeBtn);
+                closeBtn.click()
+            }
+        
         }
     }
 }
@@ -199,7 +232,9 @@ let bannerList = [
     "global-alert-banner",
     "onetrust-banner-sdk",
     "CookiebotDialog",
+    "wscrBannerContent",
     "focus-lock-id",
+    "cmpCookiePolicy",
     "gdpr-new-container",
     "gdpr-banner",
     "gdpr-popup",
@@ -207,6 +242,8 @@ let bannerList = [
     "gdpr-content",
     "gdpr_consent",
     "fides-banner",
+    "ncmp__banner",
+    "ez-cookie-dialog",
     "awsccc-cb-content",
     "toast-container",
     "modal-886ab",
@@ -218,6 +255,7 @@ let bannerList = [
     "user-consent-management",
     "consent_blackbar",
     "consent-overlay",
+    "consent-tracking",
     "cookiescript_injected",
     "CookieAlert",
     "ConsentBanner",
@@ -276,7 +314,11 @@ let mangeList = [
     "pc-btn-handler",
     "ck_set",
     "cookie-settings",
+    "ncmp__btn-border",
+    "wscrBannerLink",
+    "CookieBannerPreferences",
     "Manage",
+    "settingsLink",
     "more",
     "manage",
     "settings",
@@ -289,7 +331,10 @@ let closeCookieList = [
     "button--reject",
     "red ensButtons",
     "close-btn-handler",
+    "ncmp__btn-danger",
+    "Confirm my selection",
     "sn-b-save",
+    "SaveButton_u973clc",
     "learn_more_agree",
     "accept-selection",
     "Save",
@@ -302,6 +347,7 @@ let closeCookieList = [
 let textAcceptList = [
     "i accept",
     "accept",
+    "allow all",
     "agree",
     "accept all",
     "ok"
@@ -313,5 +359,10 @@ let textRejectList = [
     "continue without accepting",
     "accept essential cookies",
     "decline all",
-    "reject non-essential"
+    "reject non-essential",
+    "disagree"
+]
+
+let textmangePref = [
+    "save preferences"
 ]
