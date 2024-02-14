@@ -223,14 +223,15 @@ function closeMangePage(banner){
 setTimeout(checkForCookieBanner, 1000);
 
 let bannerList = [
+    "_9HetvA",
     "_50f4",
     "didomi-host",
     "app-0-0-2",
     "qc-cmp2-ui",
     "evidon-banner",
+    "onetrust-banner-sdk",
     "portal-container",
     "global-alert-banner",
-    "onetrust-banner-sdk",
     "CookiebotDialog",
     "wscrBannerContent",
     "focus-lock-id",
@@ -251,6 +252,7 @@ let bannerList = [
     "sn-inner",
     "all4-cc-grid",
     "ytd-consent",
+    "Your data privacy",
     "consent-manager",
     "user-consent-management",
     "consent_blackbar",
@@ -267,6 +269,7 @@ let bannerList = [
     "cookieconsent",
     "cookie_banner",
     "Cookie banner",
+    "privacy_widget",
     "Privacy",
     "cookie-banner",
     "mainContent",
@@ -345,17 +348,20 @@ let closeCookieList = [
 ]
 
 let textAcceptList = [
+    "accept all cookies",
     "i accept",
     "accept",
     "allow all",
     "agree",
     "accept all",
     "ok"
+    
 ]
 
 let textRejectList = [
     "reject",
     "reject all",
+    "reject all cookies",
     "continue without accepting",
     "accept essential cookies",
     "decline all",
