@@ -81,35 +81,11 @@ function findButtonByTextContent(banner, descriptions, close = false) {
             }
         }
     }
-    // if (close){
-    //     console.log("searching whole doc for close button")
-    //     button = findButtonByTextContentDocument( descriptions)
-    //     return button
-    // }
     console.log('No exact match found.');
     return null;
 }
 
-// function findButtonByTextContentDocument( descriptions) {
-//     const allButtons = document.querySelectorAll('button, span, a');
-//     console.log('Searching for exact matches:', descriptions.join(', '));
 
-//     for (const description of descriptions) {
-//         for (const button of allButtons) {
-//             // Trim and convert the button text to lowercase for comparison
-//             const buttonText = button.textContent.trim().toLowerCase();
-
-//             // Check for an exact match instead of using includes
-//             if (buttonText === description) { // Assuming `description` is already lowercase
-//                 console.log('Exact match found:', button);
-//                 return button; // Return the first button that exactly matches the description
-//             }
-//         }
-//     }
-    
-//     console.log('No exact match found.');
-//     return null;
-// }
 
 function checkForCookieBanner(times = 0) {
     console.log('start');
@@ -339,6 +315,7 @@ let mangeList = [
 ]
 
 let closeCookieList = [
+    "fc-confirm-choices",
     "button--reject",
     "red ensButtons",
     "close-btn-handler",
