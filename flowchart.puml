@@ -1,0 +1,45 @@
+@startuml flowchart
+!define DECISION rectangle 
+!define PROCESS rectangle
+!define PREDEFINED_PROCESS rectangle
+
+skinparam linetype ortho
+
+PROCESS Start
+PROCESS "Find Banner" as FindBanner
+DECISION "Did you find banner?" as BannerFound
+PROCESS "Program Stops" as Stop
+DECISION "Is the user preference accept?" as UserPrefAccept
+PREDEFINED_PROCESS "Find Accept" as FindAccept
+DECISION "Did you find the button?" as AcceptButtonFound
+PROCESS "Click Action" as ClickAction
+PREDEFINED_PROCESS "Find Reject" as FindReject
+PREDEFINED_PROCESS "Find Manage Button" as FindManage
+DECISION "Was the manage button found?" as ManageButtonFound
+PREDEFINED_PROCESS "Find Reject Button" as FindRejectButton
+DECISION "Did you find reject button?" as RejectButtonFound
+PREDEFINED_PROCESS "Find Save/Close" as FindSaveClose
+DECISION "Was the button found?" as SaveCloseButtonFound
+
+Start -right-> FindBanner
+FindBanner -right-> BannerFound
+BannerFound -right-> UserPrefAccept : Yes
+BannerFound -down-> Stop : No
+UserPrefAccept -right-> FindAccept : Accept
+UserPrefAccept -down-> FindReject : Not Accept
+FindAccept -right-> AcceptButtonFound
+AcceptButtonFound -right-> ClickAction : Yes
+AcceptButtonFound -down-> Stop : No
+ClickAction -down-> Stop
+FindReject -right-> ManageButtonFound
+ManageButtonFound -down-> FindManage : No
+ManageButtonFound -right-> FindRejectButton : Yes
+FindManage -down-> Stop
+FindRejectButton -right-> RejectButtonFound
+RejectButtonFound -right-> ClickAction : Yes
+RejectButtonFound -down-> FindSaveClose : No
+FindSaveClose -right-> SaveCloseButtonFound
+SaveCloseButtonFound -right-> ClickAction : Yes
+SaveCloseButtonFound -down-> Stop : No
+
+@enduml

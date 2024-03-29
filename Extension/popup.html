@@ -8,18 +8,29 @@
     <script type="module" src="popup.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Cookie Notice Automator</h1>
+    </header>
     <div class="description">
-        <p>Add cookie description ddddd dddd dddd dddd dddddd dddddddd ddddddddddd dddddddddd  ddddddddddd  ddddddddddddd d ddddddddddddd  dddddddd  dddd</p>
+        <p>Cookies are small files that websites place on your device to remember you and track your visit. While they enhance browsing by saving preferences, they can also invade privacy by tracking behavior across sites and pose potential security risks if misused.</p>
     </div>
     <div class="options">
-        <label> 
+        <label class="option"> 
             Accept All
             <input type="radio" name="cookieOption" value="accept" id="acceptAll">
+            <details class="additionalDescription">
+                <summary>Details</summary>
+                <p>Accepting all cookies means you're allowing a website to store various types of cookies on your device. This includes cookies necessary for the website's basic functions, as well as others used for analytics, advertising, and tracking your behavior across the web. By accepting, you agree to both the convenience features, like saving your login details, and to being tracked for personalized ads and content, potentially affecting your privacy.</p>
+            </details>
         </label>
-        <label> 
+        <label class="option"> 
             Reject All
             <input type="radio" name="cookieOption" value="reject" id="rejectAll">
+            <details class="additionalDescription">
+                <summary>Details</summary>
+                <p>Rejecting all cookies, or getting as close as possible by rejecting all but essential ones, means you only allow the website to store cookies that are necessary for its basic functions, like maintaining your session or shopping cart. This limits the website's ability to personalize your experience, perform analytics, or track your behavior for advertising purposes. If there's no option to reject all, choosing the strictest privacy settings minimizes data collection and tracking, protecting your privacy but potentially limiting some site functionalities.</p>
+            </details>
         </label>
-    
+    </div>
 </body>
 </html>

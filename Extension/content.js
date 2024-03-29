@@ -81,7 +81,6 @@ function findButtonByTextContent(banner, descriptions, close = false) {
             }
         }
     }
-    console.log('No exact match found.');
     return null;
 }
 
@@ -130,6 +129,9 @@ function acceptAll(banner) {
             acceptBtn.click()
         }
     }
+    if (process.env.NODE_ENV === 'test') {
+        document.dispatchEvent(new CustomEvent('manageButtonCalled'));
+    }
 }
 
 
@@ -153,6 +155,9 @@ function rejectAll(banner) {
                 rejectBtn.click()
             }
             else{
+                if (process.env.NODE_ENV === 'test') {
+                    document.dispatchEvent(new CustomEvent('manageButtonCalled'));
+                }
                 manageButton(banner)
             }
         }
@@ -206,6 +211,7 @@ let bannerList = [
     "qc-cmp2-ui",
     "evidon-banner",
     "onetrust-banner-sdk",
+    "iubenda-cs-rationale",
     "portal-container",
     "global-alert-banner",
     "CookiebotDialog",
@@ -232,6 +238,7 @@ let bannerList = [
     "all4-cc-grid",
     "ytd-consent",
     "Your data privacy",
+    "consent-container",
     "consent-manager",
     "user-consent-management",
     "consent_blackbar",
@@ -359,3 +366,5 @@ let textRejectList = [
 let textmangePref = [
     "save preferences"
 ]
+
+module.exports = { findElementInBanner, findElementInDoc, findButtonByTextContent, checkForCookieBanner, acceptAll, rejectAll, manageButton, closeMangePage };

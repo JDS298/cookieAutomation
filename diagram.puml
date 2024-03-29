@@ -1,0 +1,27 @@
+@startuml extension 
+skinparam rectangle {
+    
+}
+
+package "Cookie Automation Extension" {
+    rectangle "manifest.json" as Manifest 
+    rectangle "background.js" as BGS 
+    rectangle "API Calls" as API 
+    rectangle "content.js" as CS 
+    rectangle "popup.html" as PopupHTML 
+    rectangle "popup.js" as PopupJS 
+    rectangle "popup.css" as PopupCSS 
+    rectangle "Assets\n(cookieIcon.png)" as Assets 
+    
+
+    Manifest --> BGS
+    Manifest --> PopupHTML
+    Manifest --> Assets
+    BGS -down-> API : makes
+    BGS -down-> CS: injects
+    PopupJS -left-> API : makes
+    PopupHTML -down-> PopupJS : includes
+    PopupHTML -down-> PopupCSS : includes
+    CS -right[hidden]-> API
+}
+@enduml
