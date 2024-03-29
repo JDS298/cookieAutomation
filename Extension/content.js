@@ -155,10 +155,10 @@ function rejectAll(banner) {
                 rejectBtn.click()
             }
             else{
+                manageButton(banner)
                 if (process.env.NODE_ENV === 'test') {
                     document.dispatchEvent(new CustomEvent('manageButtonCalled'));
                 }
-                manageButton(banner)
             }
         }
     }
