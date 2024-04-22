@@ -47,7 +47,6 @@ function findElementInDoc(List){
         }
         if (!element){
             element = document.querySelector(`${baseSelector}[id*='${description}']`);
-            // console.log(document.querySelector(`[class*='${description}']`))
         }
         if (!element){
             element = document.querySelector(`${baseSelector}[data-a-target*='${description}']`);
@@ -75,7 +74,7 @@ function findButtonByTextContent(banner, descriptions, close = false) {
             const buttonText = button.textContent.trim().toLowerCase();
 
             // Check for an exact match instead of using includes
-            if (buttonText === description) { // Assuming `description` is already lowercase
+            if (buttonText === description) { 
                 console.log('Exact match found:', button);
                 return button; // Return the first button that exactly matches the description
             }
@@ -200,7 +199,7 @@ function closeMangePage(banner){
 }
 
 
-// Wait for 5 seconds after the page loads, then run the check
+
 setTimeout(checkForCookieBanner, 1000);
 
 let bannerList = [
