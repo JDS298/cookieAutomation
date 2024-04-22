@@ -25,12 +25,12 @@ describe('acceptAll function', () => {
       const banner = document.querySelector('#banner');
       const acceptButton = banner.querySelector('.accept-btn');
   
-      // Spy on the click method of the button
+      
       jest.spyOn(acceptButton, 'click');
   
       acceptAll(banner);
   
-      // Verify the button was clicked
+      
       expect(acceptButton.click).toHaveBeenCalled();  
     });
   
@@ -44,13 +44,11 @@ describe('acceptAll function', () => {
       const banner = document.querySelector('#banner');
       const acceptButton = banner.querySelector('.text-accept');
   
-      // Assume findButtonByTextContent correctly identifies this element when findElementInBanner fails
-      // Spy on the click method of the button/span
       jest.spyOn(acceptButton, 'click');
   
       acceptAll(banner);
   
-      // Verify the button/span was "clicked"
+     
       expect(acceptButton.click).toHaveBeenCalled();
     });
   
@@ -64,7 +62,7 @@ describe('acceptAll function', () => {
           wasCalled = true;
       });
   
-      // Attempt to find and "click" an accept element
+    
       acceptAll(banner);
   
       expect(wasCalled).toBe(true);

@@ -1,7 +1,6 @@
 const { rejectAll} = require('../content.js');
 
 describe('rejectAll function', () => {
-    // Define your lists based on what rejectAll expects
     const rejectList = ['.reject-btn', '#reject', 'button[aria-label="reject"]'];
     const textRejectList = ['reject', 'no thanks', 'decline'];
   
@@ -15,7 +14,7 @@ describe('rejectAll function', () => {
           <!-- The manageButton might dynamically add or manage buttons, so consider that in your tests -->
         </div>
       `;
-      // Reset any spies or mocks here if you're using them
+  
     });
   
     test('clicks the button identified by CSS selector from rejectList', () => {
@@ -55,12 +54,11 @@ describe('rejectAll function', () => {
         const banner = document.querySelector('#banner');
         const rejectButtonByText = banner.querySelector('.text-reject-action');
       
-        // Assuming clicking this button changes its text (or any other observable behavior)
+        
         rejectAll(banner);
       
-        // Instead of focusing on whether findButtonByTextContent was called,
-        // check if the expected action (like a click) occurred.
-        expect(rejectButtonByText.textContent).toBe('Decline'); // Adjust based on expected outcome
+        
+        expect(rejectButtonByText.textContent).toBe('Decline');
       });
   
       test('calls manageButton as a final fallback', () => {
@@ -72,7 +70,7 @@ describe('rejectAll function', () => {
             wasCalled = true;
         });
       
-        // Before calling rejectAll, ensure there's no button to click
+        
         rejectAll(banner);
       
         expect(wasCalled).toBe(true);

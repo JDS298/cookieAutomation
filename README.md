@@ -1,1 +1,2 @@
-# cookieAutomation
+# cookieAutomation 
+This extension has not been packaged to use it download extensions to you computer then in chrome navigate to manage extensions and change to developer mode for there select the extension file and you will be able to use it.

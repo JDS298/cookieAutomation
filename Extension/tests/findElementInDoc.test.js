@@ -61,15 +61,15 @@ describe('findElementInDoc function', () => {
         expect(result).toBeNull();
       });
       
-      // Assuming your setup already includes elements for testing exact and partial matches
+     
 test('identifies element with exact match', () => {
-    const descriptions = ['testClass']; // Assuming an exact match exists
+    const descriptions = ['testClass'];
     const result = findElementInDoc(descriptions);
     expect(result).not.toBeNull();
   });
   
   test('identifies element with partial match', () => {
-    const descriptions = ['testCl']; // Assuming this partial text can still find the element
+    const descriptions = ['testCl']; 
     const result = findElementInDoc(descriptions);
     expect(result).not.toBeNull();
   });
@@ -86,19 +86,18 @@ test('identifies element with exact match', () => {
       </div>
     `;
   
-    const descriptions = ['matchLabel']; // These descriptions match multiple elements
+    const descriptions = ['matchLabel']; 
     const result = findElementInDoc(descriptions);
     
-    // Check that the function returns the first matching element
-    // In the given setup, the first div with the class "match" and aria-label "matchLabel" should be returned
+    
     expect(result).not.toBeNull();
-    expect(result.textContent).toContain('First'); // Verifying it's the first matching element
+    expect(result.textContent).toContain('First'); 
   });
 
   test('excludes specified elements from search', () => {
     const descriptions = ['excludedElementDescription'];
     const result = findElementInDoc(descriptions);
-    // Assuming 'excludedElementDescription' is only present in excluded elements
+  
     expect(result).toBeNull();
   });
 

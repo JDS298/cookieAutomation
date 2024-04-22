@@ -45,7 +45,7 @@ describe('findButtonByTextContent function', () => {
       });
 
       test('returns the first exact match found', () => {
-        document.body.innerHTML += `<button>Extra Button</button>`; // Assuming "Click Me" exists from beforeEach
+        document.body.innerHTML += `<button>Extra Button</button>`;
         const banner = document.querySelector('#banner');
         const descriptions = ['click me', 'extra button'];
         const result = findButtonByTextContent(banner, descriptions);

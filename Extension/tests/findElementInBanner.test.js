@@ -74,7 +74,6 @@ describe('findElementInBanner function', () => {
   
   test('returns null when no elements match descriptions', () => {
     const banner = document.querySelector('#banner');
-    // A description that doesn't match any elements in the setup
     const descriptions = ['nonexistentDescription'];
     const result = findElementInBanner(banner, descriptions);
     expect(result).toBeNull();
@@ -93,19 +92,18 @@ describe('findElementInBanner function', () => {
     `;
   
     const banner = document.querySelector('#banner');
-    const descriptions = ['match']; // This description matches multiple elements
+    const descriptions = ['match'];
     const result = findElementInBanner(banner, descriptions);
     
     expect(result).not.toBeNull();
   
-    // Since 'href' attribute is checked first and only the <a> element has it,
-    // the function should return this <a> element as the first match.
+  
     expect(result.href).toContain('https://example.com/match');
   });
 
   test('returns null when the list of descriptions is empty', () => {
     const banner = document.querySelector('#banner');
-    const descriptions = []; // Empty list of descriptions
+    const descriptions = [];
     const result = findElementInBanner(banner, descriptions);
     
     expect(result).toBeNull();
@@ -125,7 +123,6 @@ describe('findElementInBanner function', () => {
     const descriptions = ['page']; 
     const result = findElementInBanner(banner, descriptions);
     expect(result).not.toBeNull();
-    // Assuming 'href' is checked first and contains 'page', this should match the <a> element
     expect(result.href).toContain('page');
   });
 
