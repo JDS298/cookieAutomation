@@ -13,16 +13,15 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     const newUrl = new URL(changeInfo.url);
     const newDomain = newUrl.hostname;
     if (lastDomain[tabId] !== newDomain) {
-      lastDomain[tabId] = newDomain; // Update the last domain for this tab.
-      tabsReadyForInjection[tabId] = false; // Reset readiness for new domain.
+      lastDomain[tabId] = newDomain; 
+      tabsReadyForInjection[tabId] = false; .
     }
   }
 
   // Check if the page is fully loaded.
   if (changeInfo.status === 'complete') {
-    // Mark as ready for injection only if the domain was previously updated.
     if (tabsReadyForInjection.hasOwnProperty(tabId) && !tabsReadyForInjection[tabId]) {
-      tabsReadyForInjection[tabId] = true; // Mark as ready.
+      tabsReadyForInjection[tabId] = true; 
       // Inject the content script since the domain has changed and the page is fully loaded.
       chrome.scripting.executeScript({
         target: { tabId: tabId },
