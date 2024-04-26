@@ -70,13 +70,12 @@ function findButtonByTextContent(banner, descriptions, close = false) {
 
     for (const description of descriptions) {
         for (const button of allButtons) {
-            // Trim and convert the button text to lowercase for comparison
+           
             const buttonText = button.textContent.trim().toLowerCase();
-
-            // Check for an exact match instead of using includes
+           
             if (buttonText === description) { 
                 console.log('Exact match found:', button);
-                return button; // Return the first button that exactly matches the description
+                return button; 
             }
         }
     }
